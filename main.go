@@ -38,6 +38,7 @@ func main() {
 func connectToMongoDB() {
 	// Set client options
 	clientOptions := options.Client().ApplyURI("mongodb://root:example@mongo:27017/")
+
 	// Connect to MongoDB
 	client, err := mongo.Connect(context.Background(), clientOptions)
 	if err != nil {

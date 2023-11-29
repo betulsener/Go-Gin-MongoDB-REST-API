@@ -2,5 +2,5 @@ services:
   api:
     image: myapi:1
     ports:
-      - "80:8080"
+      - "82:8080"
       

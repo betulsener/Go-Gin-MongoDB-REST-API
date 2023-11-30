@@ -32,11 +32,12 @@ func main() {
 	// r.GET(baseURL+"/", handleUserEvent)
 
 	r.GET(baseURL+"/getUsers", getUsers)
-	r.Run("0.0.0.0:8080") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
+	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
 
 func connectToMongoDB() {
-	// Set client options
+	// Set client options docker-compose -f docker-compose_myapi.yml up -d
+
 	clientOptions := options.Client().ApplyURI("mongodb://root:example@mongo:27017/")
 
 	// Connect to MongoDB

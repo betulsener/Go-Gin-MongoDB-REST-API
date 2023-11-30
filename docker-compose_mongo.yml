@@ -1,5 +1,9 @@
 version: '3.1'
 
+networks:
+  mgmt:
+    driver: bridge
+
 services:
   mongo:
     image: mongo:4.4.25
@@ -8,20 +12,18 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
     networks:
-      - db_net
+      - mgmt
 
   mongo-express:
     image: mongo-express
     restart: always
     ports:
-      - "8081:8081"
+      - "8082:8082"
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
-      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
+      ME_CONFIG_MONGODB_URL: mongo
     networks:
-      - db_net
+      - mgmt
 
-networks:
-  db_net:
-    driver: bridge
+
